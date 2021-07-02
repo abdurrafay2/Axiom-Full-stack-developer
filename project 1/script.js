@@ -20,6 +20,26 @@ formcontrol.className='form-control success';
 
 }
 
+function checklength(input,minval,maxval)
+{
+if (input.value.length < minval)
+{
+    showerror(input,`${getFieldId(input)} needs to be atleast ${minval}`);
+
+
+
+}
+else if(input.value.length > maxval)
+{
+    showerror(input,`${getFieldId(input)} needs to be atleast ${minval}`);
+}
+else
+{
+    showsuccess(input);
+
+}
+}
+
 function checkRequired(inputArray)
 {
     inputArray.forEach(function(input) {
@@ -44,46 +64,9 @@ form.addEventListener('submit', function(e) {
     e.preventDefault();
     checkRequired([username,email,password,confirmpassword]);
 
-    //console.log(username.value)
-    //check if username empty
- //   if(username.value ==='' )
-    //{
-//showerror(username, 'Username is required!')
-
-  //  }
-   // else {
-     //   showsuccess(username);
-    //}
-
-    //if(email.value ==='' )
-    //{
-//showerror(email, 'Email is required!')
-
-  //  }
-    //else {
-      //  showsuccess(email);
-   // }
-
-    //if(password.value ==='' )
-    //{
-//showerror(password, 'Password is required!')
-
-  //  }
-    //else {
-      //  showsuccess(password);
-   // }
-
-    //if(confirmpassword.value ==='' )
-    //{
-//showerror(confirmpassword, 'Confirm password is required!');
-
-  //  }
-    //else {
-      //  showsuccess(confirmpassword);
-    //}
-    
-
-    
+  
+    checklength(username,3,10);
+    checklength(password,6,30);
 
 });
 
